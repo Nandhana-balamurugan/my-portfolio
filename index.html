@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of an engineering student exploring software development, cybersecurity, web development and emerging technologies." />
+  <meta name="theme-color" content="#0b1426" />
+  <title>Nandhana Balamurugan | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1426;
+      --surface: #111f35;
+      --surface-2: #162741;
+      --text: #edf4ff;
+      --muted: #a5b5cc;
+      --blue: #4b9bff;
+      --blue-soft: #8bc0ff;
+      --line: rgba(164, 190, 224, .16);
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px);
+      background: rgba(11, 20, 38, .84); border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.15rem; }
+    .brand span { color: var(--blue); }
+    .nav-links { display: flex; gap: 26px; align-items: center; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue-soft); }
+    .menu-btn { display: none; background: transparent; border: 1px solid var(--line); color: var(--text); padding: 8px 12px; border-radius: 10px; }
+    .hero { min-height: 650px; display: grid; align-items: center; padding: 100px 0 88px; }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 54px; }
+    .eyebrow { color: var(--blue-soft); font-size: .82rem; text-transform: uppercase; letter-spacing: .16em; font-weight: 750; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); line-height: 1.04; letter-spacing: -.065em; margin: 20px 0 22px; }
+    h1 .accent { color: var(--blue); }
+    .hero-copy { max-width: 650px; color: var(--muted); font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 19px; border-radius: 11px; font-weight: 700; font-size: .93rem; border: 1px solid transparent; transition: transform .2s, background .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { background: var(--blue); color: #061225; }
+    .btn-primary:hover { background: #70b0ff; }
+    .btn-secondary { border-color: var(--line); color: var(--text); background: rgba(255,255,255,.02); }
+    .btn-secondary:hover { border-color: var(--blue); }
+    .hero-card { border: 1px solid var(--line); border-radius: 22px; padding: 28px; background: linear-gradient(145deg, rgba(75,155,255,.12), rgba(17,31,53,.75)); box-shadow: 0 24px 80px rgba(0,0,0,.2); }
+    .avatar-mark { width: 76px; height: 76px; border-radius: 20px; display: grid; place-items: center; background: rgba(75,155,255,.16); color: var(--blue-soft); font-size: 1.8rem; font-weight: 800; border: 1px solid rgba(75,155,255,.28); margin-bottom: 22px; }
+    .hero-card h2 { font-size: 1.15rem; margin-bottom: 7px; }
+    .hero-card p { color: var(--muted); font-size: .92rem; }
+    .status { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; color: #b9d8ff; font-size: .82rem; }
+    .status::before { content: ""; width: 8px; height: 8px; background: #57d69a; border-radius: 50%; box-shadow: 0 0 12px #57d69a; }
+    section { padding: 88px 0; border-top: 1px solid var(--line); }
+    .section-head { margin-bottom: 34px; max-width: 680px; }
+    .section-kicker { color: var(--blue); text-transform: uppercase; letter-spacing: .15em; font-size: .75rem; font-weight: 800; }
+    h2.section-title { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.045em; line-height: 1.15; margin-top: 10px; }
+    .section-intro { color: var(--muted); margin-top: 12px; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 44px; }
+    .about-text { color: var(--muted); }
+    .about-text p + p { margin-top: 16px; }
+    .info-panel { background: var(--surface); border: 1px solid var(--line); padding: 24px; border-radius: 18px; }
+    .info-row { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: .9rem; }
+    .info-row:last-child { border-bottom: 0; }
+    .info-row span:first-child { color: var(--muted); }
+    .info-row span:last-child { text-align: right; font-weight: 650; }
+    .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-card, .project-card, .timeline-card { background: var(--surface); border: 1px solid var(--line); border-radius: 17px; padding: 23px; transition: transform .22s, border-color .22s; }
+    .skill-card:hover, .project-card:hover { transform: translateY(-5px); border-color: rgba(75,155,255,.55); }
+    .skill-card h3, .project-card h3 { font-size: 1.05rem; margin-bottom: 9px; }
+    .skill-card p, .project-card p { color: var(--muted); font-size: .9rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .tag { color: #c8dcf7; background: rgba(75,155,255,.1); border: 1px solid rgba(75,155,255,.17); padding: 5px 10px; border-radius: 999px; font-size: .76rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px; }
+    .project-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: rgba(75,155,255,.13); color: var(--blue-soft); font-weight: 800; }
+    .project-status { color: #a9cfff; font-size: .74rem; border: 1px solid rgba(75,155,255,.25); padding: 4px 9px; border-radius: 999px; }
+    .project-link { display: inline-flex; color: var(--blue-soft); font-size: .88rem; font-weight: 700; margin-top: 19px; }
+    .project-link:hover { color: white; }
+    .timeline { display: grid; gap: 14px; }
+    .timeline-card { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+    .timeline-card p { color: var(--muted); font-size: .9rem; margin-top: 5px; }
+    .timeline-label { color: var(--blue-soft); font-size: .8rem; white-space: nowrap; }
+    .contact-box { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 34px; border-radius: 22px; border: 1px solid rgba(75,155,255,.28); background: linear-gradient(120deg, rgba(75,155,255,.13), rgba(17,31,53,.85)); }
+    .contact-box p { color: var(--muted); margin-top: 8px; max-width: 570px; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    footer { padding: 28px 0; color: var(--muted); font-size: .82rem; }
+    footer .container { display: flex; justify-content: space-between; gap: 16px; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 800px) {
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding: 82px 0; }
+      .hero-card { max-width: 480px; }
+      .skill-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-box { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 600px) {
+      .container { width: min(100% - 30px, var(--max)); }
+      nav { min-height: 66px; }
+      .menu-btn { display: inline-block; }
+      .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; padding: 18px 22px 22px; background: #0e1a2e; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .skill-grid, .project-grid { grid-template-columns: 1fr; }
+      section { padding: 68px 0; }
+      .timeline-card { flex-direction: column; gap: 7px; }
+      footer .container { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- PERSONALIZE: Replace "Your Name", contact details, education details and social links. -->
+  <div class="nav-wrap">
+    <nav class="container">
+      <a class="brand" href="#home">Nandhana Balamurugan<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">Menu</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <header class="hero container" id="home">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Engineering Student · Learning Every Day</p>
+          <h1>Building ideas.<br /><span class="accent">Creating solutions.</span></h1>
+          <p class="hero-copy">I'm an engineering student exploring software development, web technologies and cybersecurity. I enjoy learning by building practical projects and turning new concepts into useful solutions.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <div class="avatar-mark">&lt;/&gt;</div>
+          <h2>Nandhana Balamurugan</h2>
+          <p>Curious learner. Problem solver. Future engineer.</p>
+          <div class="status">Open to learning opportunities</div>
+        </aside>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">A little about me</p>
+          <h2 class="section-title">Curiosity first. Progress always.</h2>
+        </div>
+        <div class="about-grid reveal">
+          <div class="about-text">
+            <p>I'm an engineering student building a foundation across programming, databases, networking and the web. I like understanding how things work, practising hands-on and documenting what I learn.</p>
+            <p>My current interests include web development, software engineering, cybersecurity, cloud computing and AI/ML. I'm looking for opportunities to learn from real projects, collaborate with others and keep improving.</p>
+          </div>
+          <div class="info-panel">
+            <div class="info-row"><span>Education</span><span>Engineering Student</span></div>
+            <div class="info-row"><span>Location</span><span>Coimbatore, India</span></div>
+            <div class="info-row"><span>Focus</span><span>All-round development</span></div>
+            <div class="info-row"><span>Currently learning</span><span>Building projects</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">What I work with</p>
+          <h2 class="section-title">Skills & technologies</h2>
+          <p class="section-intro">A growing toolkit. I'm continuously practising and strengthening these foundations.</p>
+        </div>
+        <div class="skill-grid">
+          <article class="skill-card reveal"><h3>Web Development</h3><p>Building the structure and styling of responsive web pages.</p><div class="skill-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript — learning next</span></div></article>
+          <article class="skill-card reveal"><h3>Programming</h3><p>Learning programming fundamentals and problem-solving.</p><div class="skill-tags"><span class="tag">C</span><span class="tag">C++</span><span class="tag">DSA</span><span class="tag">Java</span><span class="tag">Python · Beginner</span></div></article>
+          <article class="skill-card reveal"><h3>Databases</h3><p>Working with relational database concepts and queries.</p><div class="skill-tags"><span class="tag">SQL</span><span class="tag">DBMS</span><span class="tag">RDBMS</span></div></article>
+          <article class="skill-card reveal"><h3>Networking</h3><p>Building a foundation in computer networks and communication.</p><div class="skill-tags"><span class="tag">Networking Basics</span><span class="tag">TCP/IP</span></div></article>
+          <article class="skill-card reveal"><h3>Cybersecurity</h3><p>Practising security concepts in authorised, local learning environments.</p><div class="skill-tags"><span class="tag">OWASP Juice Shop</span><span class="tag">Lab Documentation</span></div></article>
+          <article class="skill-card reveal"><h3>Tools & Workflow</h3><p>Learning to organise projects and share work clearly.</p><div class="skill-tags"><span class="tag">GitHub</span><span class="tag">Git</span><span class="tag">Claude</span><span class="tag">VS Code</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Selected work</p>
+          <h2 class="section-title">Projects I builded</h2>
+          <p class="section-intro">A few practical steps in my learning journey. I'll keep adding projects as I build and complete them.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <div class="project-top"><div class="project-icon">01</div><span class="project-status">Completed project</span></div>
+            <h3>OWASP Juice Shop Security Lab</h3>
+            <p>Set up a local OWASP Juice Shop practice environment and documented the lab scope, rules of engagement and setup checks for responsible security learning.</p>
+            <div class="skill-tags"><span class="tag">Cybersecurity</span><span class="tag">Docker</span><span class="tag">Documentation</span></div>
+            <a class="project-link" href="https://github.com/Nandhana-balamurugan/OWASP-Juice-Shop-Security-Lab" target="_blank" rel="noopener noreferrer">View GitHub repository ↗</a>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-top"><div class="project-icon">02</div><span class="project-status">SIH project</span></div>
+            <h3>OfflineRx – Offline AI-Powered Rural Healthcare Referral & Follow-up System</h3>
+            <p>Developed OfflineRx, an offline-first AI-powered healthcare referral and follow-up platform designed to support ASHA workers, ANMs, and frontline healthcare workers in rural areas.</p>
+            <div class="skill-tags"><span class="tag">AI/ML + Healthcare</span><span class="tag">Retrieval-Augmented Generation (RAG)</span><span class="tag">AI</span></div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-top"><div class="project-icon">03</div><span class="project-status">Completed project</span></div>
+            <h3>FindIt – Campus Lost & Found</h3>
+            <p>Developed a campus-based Lost and Found web application that helps students report lost or found belongings, browse reported items and reconnect missing belongings with their owners. Built collaboratively as part of a hackathon project.</p>
+            <div class="skill-tags"><span class="tag">Web Development</span><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">Vite</span></div>
+            <a class="project-link" href="https://github.com/Nandhana-balamurugan/findit-lost---found" target="_blank" rel="noopener noreferrer">View GitHub repository ↗</a>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-top"><div class="project-icon">04</div><span class="project-status">Hackathon project</span></div>
+            <h3>Business Compliance & Checklist Platform</h3>
+            <p>Collaborated in a 24-hour hackathon to develop a business compliance platform. Contributed to the Business Profile module, Rules Engine and automated Checklist Generation, helping businesses identify applicable registrations and compliance requirements based on their business details.</p>
+            <div class="skill-tags"><span class="tag">Next.js</span><span class="tag">JavaScript</span><span class="tag">Prisma</span><span class="tag">SQLite</span><span class="tag">Team Collaboration</span></div>
+            <a class="project-link" href="https://github.com/YHACK26-YS652-TheSolidSix/YHACK26-24HR-HACKATHON" target="_blank" rel="noopener noreferrer">View GitHub repository ↗</a>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-top"><div class="project-icon">05</div><span class="project-status">Coming soon</span></div>
+            <h3>Next project</h3>
+            <p>This space is ready for your next web development, programming, database or AI/ML project. Add it here once you have something working to show.</p>
+            <div class="skill-tags"><span class="tag">Building next</span><span class="tag">Hands-on learning</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="journey">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">My journey</p>
+          <h2 class="section-title">Education & experience</h2>
+          <p class="section-intro">A simple timeline that you can update with verified details as your journey grows.</p>
+        </div>
+        <div class="timeline">
+<article class="timeline-card reveal">
+  <div>
+    <h3>Bachelor's Degree in Engineering</h3>
+    <p>Currently pursuing my undergraduate engineering degree at Sri Krishna College of Engineering and Technology (SKCET), Coimbatore. Building a strong foundation in programming, databases, computer networks and software development.</p>
+  </div>
+  <span class="timeline-label">2025 – Present</span>
+</article>
+<article class="timeline-card reveal">
+  <div>
+    <h3>Projects & Practical Learning</h3>
+    <p>Gained hands-on experience through projects in web development, cybersecurity and software engineering. Worked on FindIt – Campus Lost & Found, OWASP Juice Shop Security Lab and collaborative hackathon projects. Practising HTML, CSS, Java, Python, SQL, React and networking fundamentals.</p>
+  </div>
+  <span class="timeline-label">Ongoing</span>
+</article>
+<article class="timeline-card reveal">
+  <div>
+    <h3>Hackathons & Team Collaboration</h3>
+    <p>Participated in a 24-hour hackathon as part of Team TheSolidSix. Contributed to business profile development, business rules implementation and checklist generation. Gained experience in teamwork, problem-solving and collaborative software development.</p>
+  </div>
+  <span class="timeline-label">2026</span>
+</article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <div>
+            <p class="section-kicker">Let's connect</p>
+            <h2 class="section-title">Have an opportunity or idea?</h2>
+            <p>I'm happy to connect, learn, collaborate and explore opportunities. Reach out through the links below.</p>
+            <div class="contact-links">
+              <!-- Replace the email and LinkedIn placeholder before publishing. -->
+              <a class="btn btn-primary" href="mailto:nandhanatvr28@gmail.com"> Email me: nandhanatvr28@gmail.com ↗</a>
+              <a class="btn btn-secondary" href="https://github.com/Nandhana-balamurugan" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a class="btn btn-secondary" href="https://www.linkedin.com/in/nandhana-balamurugan-005357380/" rel="noopener noreferrer">LinkedIn ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container"><span>© <span id="year"></span> Nandhana Balamurugan. Built with curiosity and code.</span><a href="#home">Back to top ↑</a></div></footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("visible"));
+    }
+  </script>
+</body>
+</html>
